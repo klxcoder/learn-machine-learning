@@ -19,15 +19,28 @@ y_loss = []
 def on_click_figure(_):
     improve()
 
+m_predicted = 0
+b_predicted = 0
+
+def get_lost():
+    y_predicted = [m_predicted * _ + b_predicted for _ in x]
+    mse = 0
+    for i in range(len(y)):
+        mse += (y_predicted[i]-y[i])*(y_predicted[i]-y[i])
+    mse /= len(y)
+    return mse
+
 def improve():
+    global m_predicted, b_predicted
+    m_predicted += 0.01
+    b_predicted += 0.01
+
     # Plot the predicted line
-    m_predicted = random.random()
-    b_predicted = random.random()
     line.set_data(x, [m_predicted * _ + b_predicted for _ in x])
     
     # Plot the loss
     x_loss.append(len(x_loss))
-    y_loss.append(random.random())
+    y_loss.append(get_lost())
     axes[1].plot(x_loss, y_loss)
 
     fig = plt.gcf()
