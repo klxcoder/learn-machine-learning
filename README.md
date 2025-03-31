@@ -42,3 +42,7 @@ By the end of this Specialization, you will have mastered key concepts and gaine
 
 - Rule: Simultaneously update $w$ and $b$
   + $[w, b] = [w, b] - \alpha[\frac{\partial}{\partial w}J(w,b), \frac{\partial}{\partial b}J(w,b)]$
+
+# Calculate $\frac{\partial}{\partial w}J(w,b)$ and $\frac{\partial}{\partial b}J(w,b)$ with $J(w,b) = MSE$
+  - $\frac{\partial}{\partial w}J(w,b) = \frac{\partial}{\partial w}MSE = \frac{\partial}{\partial w}\frac{1}{m}\sum_{i=1}^{m}(\hat{y}^{(i)} - y^{(i)})^2 = \frac{\partial}{\partial w}\frac{1}{m}\sum_{i=1}^{m}(wx^{(i)} + b - y^{(i)})^2 = \frac{1}{m}\sum_{i=1}^{m}(wx^{(i)} + b - y^{(i)})2x^{(i)}$
+  - $\frac{\partial}{\partial b}J(w,b) = \frac{\partial}{\partial b}MSE = \frac{\partial}{\partial b}\frac{1}{m}\sum_{i=1}^{m}(\hat{y}^{(i)} - y^{(i)})^2 = \frac{\partial}{\partial b}\frac{1}{m}\sum_{i=1}^{m}(wx^{(i)} + b - y^{(i)})^2 = \frac{1}{m}\sum_{i=1}^{m}(wx^{(i)} + b - y^{(i)})2$
