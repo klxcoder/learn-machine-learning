@@ -14,7 +14,7 @@ Welcome to the Machine Learning Specialization! You're joining millions of other
   - [x] Linear regression model part 1 [link](https://www.coursera.org/learn/machine-learning/lecture/1ACA2/linear-regression-model-part-1)
   - [x] Linear regression model part 2 [link](https://www.coursera.org/learn/machine-learning/lecture/nucNi/linear-regression-model-part-2)
   - [x] Cost function formula [link](https://www.coursera.org/learn/machine-learning/lecture/1Z0TT/cost-function-formula)
-  - [ ] Cost function intuition
+  - [x] Cost function intuition [link](https://www.coursera.org/learn/machine-learning/lecture/FthLz/cost-function-intuition)
   - [ ] Visualizing the cost function
   - [ ] Visualization examples
   - [ ] Gradient descent
