@@ -19,7 +19,7 @@ Welcome to the Machine Learning Specialization! You're joining millions of other
   - [x] Visualization examples [link](https://www.coursera.org/learn/machine-learning/lecture/Ov8Zt/visualization-examples)
   - [x] Gradient descent [link](https://www.coursera.org/learn/machine-learning/lecture/2f2PA/gradient-descent)
   - [x] Implementing gradient descent [link](https://www.coursera.org/learn/machine-learning/lecture/TXDBu/implementing-gradient-descent)
-  - [ ] Gradient descent intuition
+  - [x] Gradient descent intuition [link](https://www.coursera.org/learn/machine-learning/lecture/2EoN6/gradient-descent-intuition)
   - [ ] Learning rate
   - [ ] Gradient descent for linear regression
   - [ ] Running gradient descent
