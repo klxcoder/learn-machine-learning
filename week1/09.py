@@ -30,6 +30,9 @@ def improve():
     y_loss.append(0)
     axes[1].plot(x_loss, y_loss)
 
+    fig = plt.gcf()
+    fig.canvas.draw() # Force a redraw of the figure
+
 def gradient_descent():
     
     axes[0].scatter(x, y)
@@ -40,10 +43,6 @@ def gradient_descent():
     axes[1].set_title('Loss')
     axes[1].set_xlabel('t')
     axes[1].set_ylabel('loss')
-
-    for _ in range(10):
-        improve()
-        plt.pause(0.5)
 
     fig = plt.gcf()
     fig.canvas.mpl_connect('button_press_event', on_click_figure)
