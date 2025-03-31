@@ -16,11 +16,10 @@ def get_data():
 x_loss = []
 y_loss = []
 
-def on_click_figure(_):
-    improve()
-
 m_predicted = 0
 b_predicted = 0
+
+is_mouse_pressed = False
 
 def get_lost():
     y_predicted = [m_predicted * _ + b_predicted for _ in x]
@@ -46,6 +45,21 @@ def improve():
     fig = plt.gcf()
     fig.canvas.draw() # Force a redraw of the figure
 
+def on_press(event): # type: ignore
+    global is_mouse_pressed
+    if event.inaxes == axes[0] or event.inaxes == axes[1]: # Only trigger if click is within the axes
+        is_mouse_pressed = True
+        improve() # Call improve immediately on press
+
+def on_motion(event): # type: ignore
+    global is_mouse_pressed
+    if is_mouse_pressed and (event.inaxes == axes[0] or event.inaxes == axes[1]):
+        improve()
+
+def on_release(event): # type: ignore
+    global is_mouse_pressed
+    is_mouse_pressed = False
+
 def gradient_descent():
     
     axes[0].scatter(x, y)
@@ -58,7 +72,10 @@ def gradient_descent():
     axes[1].set_ylabel('loss')
 
     fig = plt.gcf()
-    fig.canvas.mpl_connect('button_press_event', on_click_figure)
+
+    fig.canvas.mpl_connect('button_press_event', on_press)
+    fig.canvas.mpl_connect('motion_notify_event', on_motion)
+    fig.canvas.mpl_connect('button_release_event', on_release)
 
     # Adjust layout to prevent overlapping titles
     plt.tight_layout()
