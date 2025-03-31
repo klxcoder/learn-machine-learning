@@ -1,6 +1,9 @@
 import matplotlib.pyplot as plt
 import random
 
+_, axes = plt.subplots(1, 2, figsize=(10, 5))
+line, = axes[0].plot([], [])
+
 def get_data():
     m = random.choice(range(5))
     b = random.choice(range(5))
@@ -8,10 +11,15 @@ def get_data():
     y = [m * _ + b + 2 * random.random() for _ in x]
     return (m, b, x, y)
 
-def on_click_figure(_):
-    print('Clicked')
+(m, b, x, y) = get_data()
 
-def improve(x: list[int], x_loss: list[int], y_loss: list[int], line, axes): # type: ignore
+x_loss = []
+y_loss = []
+
+def on_click_figure(_):
+    improve()
+
+def improve():
     # Plot the predicted line
     m_predicted = random.random()
     b_predicted = random.random()
@@ -23,26 +31,18 @@ def improve(x: list[int], x_loss: list[int], y_loss: list[int], line, axes): # t
     axes[1].plot(x_loss, y_loss)
 
 def gradient_descent():
-    (m, b, x, y) = get_data()
-
-    _, axes = plt.subplots(1, 2, figsize=(10, 5))
-
+    
     axes[0].scatter(x, y)
     axes[0].set_title(f'y = {m} * x + {b} + noise')
     axes[0].set_xlabel('x')
     axes[0].set_ylabel('y')
 
-    line, = axes[0].plot([], [])
-
     axes[1].set_title('Loss')
     axes[1].set_xlabel('t')
     axes[1].set_ylabel('loss')
 
-    x_loss = []
-    y_loss = []
-
     for _ in range(10):
-        improve(x, x_loss, y_loss, line, axes)
+        improve()
         plt.pause(0.5)
 
     fig = plt.gcf()
