@@ -6,7 +6,7 @@ Welcome to the Machine Learning Specialization! You're joining millions of other
   - [x] Welcome to machine learning
   - [x] Applications of machine learning
   - [x] What is machine learning?
-  - [ ] Supervised learning part 1
+  - [x] Supervised learning part 1
   - [ ] Supervised learning part 2
   - [ ] Unsupervised learning part 1
   - [ ] Unsupervised learning part 2
