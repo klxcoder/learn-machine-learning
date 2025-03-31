@@ -29,3 +29,16 @@ By the end of this Specialization, you will have mastered key concepts and gaine
     + $MAE = \frac{1}{m} \sum_{i=1}^{m} |\hat{y}^{(i)} - y^{(i)}|$ = Mean Absolute Error
     + $RMSE = \sqrt{\frac{1}{m} \sum_{i=1}^{m} (\hat{y}^{(i)} - y^{(i)})^2}$ = Root Mean Squared Error
     + $\text{CCE} = -\frac{1}{m} \sum_{i=1}^{m} \sum_{j=1}^{k} y_j^{(i)} \log \hat{y}_j^{(i)}$ = Categorical Cross-Entropy
+
+# Gradient descent algorithm
+- Repeat until convergence:
+  + $w = w - \alpha\frac{\partial}{\partial w}J(w,b)$
+  + $b = b - \alpha\frac{\partial}{\partial b}J(w,b)$
+
+- Where:
+  - $\alpha$ = learning rate
+  - $\frac{\partial}{\partial w}J(w,b)$ = derivative
+  - $\frac{\partial}{\partial b}J(w,b)$ = derivative
+
+- Rule: Simultaneously update $w$ and $b$
+  + $[w, b] = [w, b] - \alpha[\frac{\partial}{\partial w}J(w,b), \frac{\partial}{\partial b}J(w,b)]$
