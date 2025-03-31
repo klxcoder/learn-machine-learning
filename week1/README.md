@@ -9,7 +9,7 @@ Welcome to the Machine Learning Specialization! You're joining millions of other
   - [x] Supervised learning part 1
   - [x] Supervised learning part 2
   - [x] Unsupervised learning part 1
-  - [ ] Unsupervised learning part 2
+  - [x] Unsupervised learning part 2
   - [ ] Jupyter Notebooks
   - [ ] Linear regression model part 1
   - [ ] Linear regression model part 2
