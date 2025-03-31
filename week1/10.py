@@ -31,8 +31,8 @@ def get_derivative():
     derivative_w = sum((db * xi) for db, xi in zip(arr, x)) * 2 / len(y)
     return (derivative_b, derivative_w)
 
-def get_lost():
-    y_predicted = [f(_, m_predicted, b_predicted) for _ in x]
+def get_lost(m: float, b: float):
+    y_predicted = [f(_, m, b) for _ in x]
     mse = sum((yp - yi)**2 for yp, yi in zip(y_predicted, y)) / len(y)
     return mse
 
@@ -51,7 +51,7 @@ def improve():
     
     # Plot the loss
     x_loss.append(len(x_loss))
-    y_loss.append(get_lost())
+    y_loss.append(get_lost(m_predicted, b_predicted))
     axes[1].plot(x_loss, y_loss)
 
     fig = plt.gcf()
