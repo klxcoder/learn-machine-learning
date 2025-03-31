@@ -25,10 +25,9 @@ b_predicted: float = 0
 is_mouse_pressed = False
 
 def get_derivative():
-    y_predicted = [f(_, m_predicted, b_predicted) for _ in x]
-    arr = [(yp - yi) for yp, yi in zip(y_predicted, y)]
-    derivative_b = sum(arr) * 2 / len(y)
-    derivative_w = sum((db * xi) for db, xi in zip(arr, x)) * 2 / len(y)
+    small = 0.001
+    derivative_b = (get_lost(m_predicted, b_predicted + small) - get_lost(m_predicted, b_predicted))/small
+    derivative_w = (get_lost(m_predicted + small, b_predicted) - get_lost(m_predicted, b_predicted))/small
     return (derivative_b, derivative_w)
 
 def get_lost(m: float, b: float):
