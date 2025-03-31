@@ -21,12 +21,12 @@ b_predicted = 0
 
 is_mouse_pressed = False
 
+def get_derivative():
+    pass
+
 def get_lost():
     y_predicted = [m_predicted * _ + b_predicted for _ in x]
-    mse = 0
-    for i in range(len(y)):
-        mse += (y_predicted[i]-y[i])*(y_predicted[i]-y[i])
-    mse /= len(y)
+    mse = sum((yi - yp)**2 for yi, yp in zip(y, y_predicted)) / len(y)
     return mse
 
 def improve():
