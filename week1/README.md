@@ -3,14 +3,14 @@
 Welcome to the Machine Learning Specialization! You're joining millions of others who have taken either this or the original course, which led to the founding of Coursera, and has helped millions of other learners, like you, take a look at the exciting world of machine learning!
 
 # Videos
-  - [x] Welcome to machine learning
-  - [x] Applications of machine learning
-  - [x] What is machine learning?
-  - [x] Supervised learning part 1
-  - [x] Supervised learning part 2
-  - [x] Unsupervised learning part 1
-  - [x] Unsupervised learning part 2
-  - [ ] Jupyter Notebooks
+  - [x] Welcome to machine learning [link](https://www.coursera.org/learn/machine-learning/lecture/iYR2y/welcome-to-machine-learning)
+  - [x] Applications of machine learning [link](https://www.coursera.org/learn/machine-learning/lecture/IjrpM/applications-of-machine-learning)
+  - [x] What is machine learning? [link](https://www.coursera.org/learn/machine-learning/lecture/PNeuX/what-is-machine-learning)
+  - [x] Supervised learning part 1 [link](https://www.coursera.org/learn/machine-learning/lecture/s91wX/supervised-learning-part-1)
+  - [x] Supervised learning part 2 [link](https://www.coursera.org/learn/machine-learning/lecture/Q8Vvp/supervised-learning-part-2)
+  - [x] Unsupervised learning part 1 [link](https://www.coursera.org/learn/machine-learning/lecture/TxO6F/unsupervised-learning-part-1)
+  - [x] Unsupervised learning part 2 [link](https://www.coursera.org/learn/machine-learning/lecture/jKBHE/unsupervised-learning-part-2)
+  - [ ] Jupyter Notebooks [link](https://www.coursera.org/learn/machine-learning/lecture/lwqzq/jupyter-notebooks)
   - [ ] Linear regression model part 1
   - [ ] Linear regression model part 2
   - [ ] Cost function formula
