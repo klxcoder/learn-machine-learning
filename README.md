@@ -19,3 +19,13 @@ This 3-course Specialization is an updated and expanded version of Andrew’s pi
 It provides a broad introduction to modern machine learning, including supervised learning (multiple linear regression, logistic regression, neural networks, and decision trees), unsupervised learning (clustering, dimensionality reduction, recommender systems), and some of the best practices used in Silicon Valley for artificial intelligence and machine learning innovation (evaluating and tuning models, taking a data-centric approach to improving performance, and more.)
 
 By the end of this Specialization, you will have mastered key concepts and gained the practical know-how to quickly and powerfully apply machine learning to challenging real-world problems. If you’re looking to break into AI or build a career in machine learning, the new Machine Learning Specialization is the best place to start.
+
+# Conventions
+  - $y^{(i)}$ = Target (output) at $i^{th}$ data
+  - $\hat{y}^{(i)}$ = `Predicted` Target (output) at $i^{th}$ data
+  - $m$ = number of training examples
+  - Cost function
+    + $MSE = \frac{1}{m}\sum_{i=1}^{m}(\hat{y}^{(i)} - y^{(i)})^2$ = Mean Squared Error
+    + $MAE = \frac{1}{m} \sum_{i=1}^{m} |\hat{y}^{(i)} - y^{(i)}|$ = Mean Absolute Error
+    + $RMSE = \sqrt{\frac{1}{m} \sum_{i=1}^{m} (\hat{y}^{(i)} - y^{(i)})^2}$ = Root Mean Squared Error
+    + $\text{CCE} = -\frac{1}{m} \sum_{i=1}^{m} \sum_{j=1}^{k} y_j^{(i)} \log \hat{y}_j^{(i)}$ = Categorical Cross-Entropy
