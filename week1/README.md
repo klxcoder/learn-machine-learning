@@ -10,7 +10,7 @@ Welcome to the Machine Learning Specialization! You're joining millions of other
   - [x] Supervised learning part 2 [link](https://www.coursera.org/learn/machine-learning/lecture/Q8Vvp/supervised-learning-part-2)
   - [x] Unsupervised learning part 1 [link](https://www.coursera.org/learn/machine-learning/lecture/TxO6F/unsupervised-learning-part-1)
   - [x] Unsupervised learning part 2 [link](https://www.coursera.org/learn/machine-learning/lecture/jKBHE/unsupervised-learning-part-2)
-  - [ ] Jupyter Notebooks [link](https://www.coursera.org/learn/machine-learning/lecture/lwqzq/jupyter-notebooks)
+  - [x] Jupyter Notebooks [link](https://www.coursera.org/learn/machine-learning/lecture/lwqzq/jupyter-notebooks)
   - [ ] Linear regression model part 1
   - [ ] Linear regression model part 2
   - [ ] Cost function formula
