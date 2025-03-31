@@ -16,23 +16,32 @@ def get_data():
 x_loss = []
 y_loss = []
 
-m_predicted = 0
-b_predicted = 0
+m_predicted: float = 0
+b_predicted: float = 0
 
 is_mouse_pressed = False
 
 def get_derivative():
-    pass
+    y_predicted = [m_predicted * _ + b_predicted for _ in x]
+    arr = [(yp - yi) for yp, yi in zip(y_predicted, y)]
+    derivative_b = sum(arr) * 2 / len(y)
+    derivative_w = sum((db * xi) for db, xi in zip(arr, x)) * 2 / len(y)
+    return (derivative_b, derivative_w)
 
 def get_lost():
     y_predicted = [m_predicted * _ + b_predicted for _ in x]
-    mse = sum((yi - yp)**2 for yi, yp in zip(y, y_predicted)) / len(y)
+    mse = sum((yp - yi)**2 for yp, yi in zip(y_predicted, y)) / len(y)
     return mse
+
+alpha = 0.01
 
 def improve():
     global m_predicted, b_predicted
-    m_predicted += 0.01
-    b_predicted += 0.01
+
+    (derivative_b, derivative_w) = get_derivative()
+
+    m_predicted -= alpha * derivative_w
+    b_predicted -= alpha * derivative_b
 
     # Plot the predicted line
     line.set_data(x, [m_predicted * _ + b_predicted for _ in x])
