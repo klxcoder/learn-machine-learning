@@ -26,8 +26,8 @@ def improve():
     line.set_data(x, [m_predicted * _ + b_predicted for _ in x])
     
     # Plot the loss
-    x_loss.append(0)
-    y_loss.append(0)
+    x_loss.append(len(x_loss))
+    y_loss.append(random.random())
     axes[1].plot(x_loss, y_loss)
 
     fig = plt.gcf()
