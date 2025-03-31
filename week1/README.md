@@ -22,4 +22,4 @@ Welcome to the Machine Learning Specialization! You're joining millions of other
   - [x] Gradient descent intuition [link](https://www.coursera.org/learn/machine-learning/lecture/2EoN6/gradient-descent-intuition)
   - [x] Learning rate [link](https://www.coursera.org/learn/machine-learning/lecture/OoP3Y/learning-rate)
   - [x] Gradient descent for linear regression [link](https://www.coursera.org/learn/machine-learning/lecture/lgSMj/gradient-descent-for-linear-regression)
-  - [ ] Running gradient descent
+  - [x] Running gradient descent [link](https://www.coursera.org/learn/machine-learning/lecture/349Ay/running-gradient-descent)
