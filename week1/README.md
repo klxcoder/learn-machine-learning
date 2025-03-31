@@ -17,7 +17,7 @@ Welcome to the Machine Learning Specialization! You're joining millions of other
   - [x] Cost function intuition [link](https://www.coursera.org/learn/machine-learning/lecture/FthLz/cost-function-intuition)
   - [x] Visualizing the cost function [link](https://www.coursera.org/learn/machine-learning/lecture/QI1h6/visualizing-the-cost-function)
   - [x] Visualization examples [link](https://www.coursera.org/learn/machine-learning/lecture/Ov8Zt/visualization-examples)
-  - [ ] Gradient descent
+  - [x] Gradient descent [link](https://www.coursera.org/learn/machine-learning/lecture/2f2PA/gradient-descent)
   - [ ] Implementing gradient descent
   - [ ] Gradient descent intuition
   - [ ] Learning rate
