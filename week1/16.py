@@ -57,7 +57,7 @@ def main():
         alpha = 0.1 # Learning rate
         weight_predicted = weight_predicted - alpha * derivative
         outputs_predicted = list(map(lambda input: get_output(weight_predicted, input, bias_predicted), inputs))
-        axes[0].plot(list(map(lambda input: input[-1], inputs)), outputs_predicted)
+        line.set_data(list(map(lambda input: input[-1], inputs)), outputs_predicted)
         fig.canvas.draw()
 
     fig, axes = plt.subplots(1, 2, figsize=(10, 5))
@@ -69,7 +69,7 @@ def main():
     axes[0].set_xlabel('x')
     axes[0].set_ylabel('y')
     axes[0].scatter(list(map(lambda input: input[-1], inputs)), outputs)
-    axes[0].plot(list(map(lambda input: input[-1], inputs)), outputs_predicted)
+    line, = axes[0].plot(list(map(lambda input: input[-1], inputs)), outputs_predicted)
     
     axes[1].set_title('Loss')
     axes[1].set_xlabel('t')
