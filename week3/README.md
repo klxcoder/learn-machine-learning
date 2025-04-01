@@ -4,7 +4,7 @@ This week, you'll learn the other type of supervised learning, classification. Y
 
 # Videos
   - [x] Motivations [link](https://www.coursera.org/learn/machine-learning/lecture/aoMt6/motivations)
-  - [ ] Logistic regression [link](https://www.coursera.org/learn/machine-learning/lecture/zNxaw/logistic-regression)
+  - [x] Logistic regression [link](https://www.coursera.org/learn/machine-learning/lecture/zNxaw/logistic-regression)
   - [ ] Decision boundary [link](https://www.coursera.org/learn/machine-learning/lecture/qrxwU/decision-boundary)
   - [ ] Cost function for logistic regression [link](https://www.coursera.org/learn/machine-learning/lecture/0hpr8/cost-function-for-logistic-regression)
   - [ ] Simplified Cost Function for Logistic Regression [link](https://www.coursera.org/learn/machine-learning/lecture/Zjj2j/simplified-cost-function-for-logistic-regression)
