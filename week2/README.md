@@ -6,7 +6,7 @@ This week, you'll extend linear regression to handle multiple input features. Yo
   - [x] Multiple features [link](https://www.coursera.org/learn/machine-learning/lecture/gFuSx/multiple-features)
   - [x] Vectorization part 1 [link](https://www.coursera.org/learn/machine-learning/lecture/ismjc/vectorization-part-1)
   - [x] Vectorization part 2 [link](https://www.coursera.org/learn/machine-learning/lecture/p2Nqv/vectorization-part-2)
-  - [ ] Gradient descent for multiple linear regression
+  - [x] Gradient descent for multiple linear regression [link](https://www.coursera.org/learn/machine-learning/lecture/ltMMp/gradient-descent-for-multiple-linear-regression)
   - [ ] Feature scaling part 1
   - [ ] Feature scaling part 2
   - [ ] Checking gradient descent for convergence
