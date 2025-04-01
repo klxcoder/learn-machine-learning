@@ -53,11 +53,22 @@ def main():
             weight_predicted[i] -= small
         return np.array(derivative)
 
+    def get_bias_derivative() -> float:
+        nonlocal outputs_predicted
+        small: float = 0.01
+        current_loss: float = get_loss(outputs_predicted, outputs)
+        outputs_predicted = list(map(lambda input: get_output(weight_predicted, input, bias_predicted + small), inputs))
+        next_loss: float = get_loss(outputs_predicted, outputs)
+        return (next_loss - current_loss) / small
+
     def improve():
         nonlocal weight_predicted
-        derivative: NDArray[np.float64] = get_weight_derivative()
+        nonlocal bias_predicted
         alpha: float = 1e-10 # Learning rate
-        weight_predicted = weight_predicted - alpha * derivative
+        weight_derivative: NDArray[np.float64] = get_weight_derivative()
+        weight_predicted = weight_predicted - alpha * weight_derivative
+        bias_derivative: float = get_bias_derivative()
+        bias_predicted = bias_predicted - alpha * bias_derivative
         outputs_predicted = list(map(lambda input: get_output(weight_predicted, input, bias_predicted), inputs))
         l: float = get_loss(outputs_predicted, outputs)
         x_loss.append(len(x_loss))
