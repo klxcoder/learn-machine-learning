@@ -23,23 +23,37 @@ def get_data():
     bias: float = random.choice(range(-5, 6))
     xs: list[int] = list(range(-20, 21))
     inputs = list(map(lambda x: np.array([x**3, x**2, x]), xs))
-    outputs = list(map(lambda input: get_output(weight, input, bias), inputs))
+    outputs: list[float] = list(map(lambda input: get_output(weight, input, bias), inputs))
     return (weight, bias, inputs, outputs)
 
-def get_derivative() -> NDArray[np.float64]:
-    return np.array([1, 2, 3])
+def get_loss(outputs_predicted: list[float], outputs: list[float]) -> float:
+    mse: float = sum((yp - yi)**2 for yp, yi in zip(outputs_predicted, outputs)) / len(outputs)
+    return mse
 
 def main():
 
     (weight, bias, inputs, outputs) = get_data()
     weight_predicted: NDArray[np.float64] = np.array([0, 0, 0])
     bias_predicted: float = 0
-    outputs_predicted = list(map(lambda input: get_output(weight_predicted, input, bias_predicted), inputs))
+    outputs_predicted: list[float] = list(map(lambda input: get_output(weight_predicted, input, bias_predicted), inputs))
+
+    def get_derivative() -> NDArray[np.float64]:
+        nonlocal outputs_predicted
+        small: float = 0.01
+        current_loss: float = get_loss(outputs_predicted, outputs)
+        derivative: list[float] = []
+        for i in range(len(weight)):
+            weight_predicted[i] += small
+            outputs_predicted = list(map(lambda input: get_output(weight_predicted, input, bias_predicted), inputs))
+            next_loss: float = get_loss(outputs_predicted, outputs)
+            derivative.append((next_loss - current_loss) / small)
+            weight_predicted[i] -= small
+        return np.array(derivative)
 
     def improve():
         nonlocal weight_predicted
         derivative: NDArray[np.float64] = get_derivative()
-        alpha = 0.1 # Learning rate
+        alpha: float = 1e-10 # Learning rate
         weight_predicted = weight_predicted - alpha * derivative
         outputs_predicted = list(map(lambda input: get_output(weight_predicted, input, bias_predicted), inputs))
         line.set_data(list(map(lambda input: input[-1], inputs)), outputs_predicted)
