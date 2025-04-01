@@ -12,6 +12,7 @@ def f(x: float, model: NDArray[np.float64]):
     return a*x**4
 
 alpha = 1e-10
+# alpha = 5.79e-10 # zig zag loss
 
 def get_data():
     a = random.choice(range(-5, 6))
@@ -19,6 +20,7 @@ def get_data():
     c = random.choice(range(-5, 6))
     d = random.choice(range(-5, 6))
     model: NDArray[np.float64] = np.array([a, b, c, d])
+    # model: NDArray[np.float64] = np.array([-3, 3, 4, 3]) # zig zag loss
     x: list[int] = list(range(-20, 21))
     y: list[int] = [f(_, model) + 2 * random.random() for _ in x]
     return (model, x, y)
