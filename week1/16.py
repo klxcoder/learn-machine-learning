@@ -22,10 +22,12 @@ def get_data():
     bias: float = 0
     xs: list[int] = list(range(-20, 21))
     inputs = list(map(lambda x: np.array([x**3, x**2, x]), xs))
-    return (weight, bias, inputs)
+    outputs = list(map(lambda input: input[-1], inputs))
+    return (weight, bias, inputs, outputs)
 
 if __name__ == '__main__':
-    (weight, bias, inputs) = get_data()
+    (weight, bias, inputs, outputs) = get_data()
     print(weight)
     print(bias)
     print(inputs)
+    print(outputs)
