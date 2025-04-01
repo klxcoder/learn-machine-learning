@@ -20,7 +20,7 @@ def get_data():
         random.choice(range(-5, 6)),
         random.choice(range(-5, 6)),
     ])
-    bias: float = 0
+    bias: float = random.choice(range(-5, 6))
     xs: list[int] = list(range(-20, 21))
     inputs = list(map(lambda x: np.array([x**3, x**2, x]), xs))
     outputs = list(map(lambda input: get_output(weight, input, bias), inputs))
