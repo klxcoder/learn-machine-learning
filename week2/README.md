@@ -11,5 +11,5 @@ This week, you'll extend linear regression to handle multiple input features. Yo
   - [x] Feature scaling part 2 [link](https://www.coursera.org/learn/machine-learning/lecture/akapu/feature-scaling-part-2)
   - [x] Checking gradient descent for convergence [link](https://www.coursera.org/learn/machine-learning/lecture/rOTkB/checking-gradient-descent-for-convergence)
   - [x] Choosing the learning rate [link](https://www.coursera.org/learn/machine-learning/lecture/10ZVv/choosing-the-learning-rate)
-  - [ ] Feature engineering [link](https://www.coursera.org/learn/machine-learning/lecture/dgZYR/feature-engineering)
+  - [x] Feature engineering [link](https://www.coursera.org/learn/machine-learning/lecture/dgZYR/feature-engineering)
   - [ ] Polynomial regression [link](https://www.coursera.org/learn/machine-learning/lecture/OnGhN/polynomial-regression)
