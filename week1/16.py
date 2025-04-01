@@ -23,3 +23,9 @@ def get_data():
     xs: list[int] = list(range(-20, 21))
     input = list(map(lambda x: x, xs))
     return (weight, bias, input)
+
+if __name__ == '__main__':
+    (weight, bias, input) = get_data()
+    print(weight)
+    print(bias)
+    print(input)
