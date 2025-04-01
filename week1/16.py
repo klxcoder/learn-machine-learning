@@ -28,10 +28,6 @@ def get_data():
 
 if __name__ == '__main__':
     (weight, bias, inputs, outputs) = get_data()
-    print(weight)
-    print(bias)
-    print(inputs)
-    print(outputs)
 
     _, axes = plt.subplots(1, 2, figsize=(10, 5))
 
