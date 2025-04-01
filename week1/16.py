@@ -6,6 +6,7 @@ output: vector = [y]
 outputs: vectors
 """
 
+import matplotlib.pyplot as plt
 import numpy as np
 from numpy.typing import NDArray
 import random
@@ -31,3 +32,16 @@ if __name__ == '__main__':
     print(bias)
     print(inputs)
     print(outputs)
+
+    _, axes = plt.subplots(1, 2, figsize=(10, 5))
+
+    axes[1].set_title('y = f(x)')
+    axes[0].set_xlabel('x')
+    axes[0].set_ylabel('y')
+
+    axes[1].set_title('Loss')
+    axes[1].set_xlabel('t')
+    axes[1].set_ylabel('loss')
+
+    plt.tight_layout()
+    plt.show()
