@@ -35,9 +35,10 @@ if __name__ == '__main__':
 
     _, axes = plt.subplots(1, 2, figsize=(10, 5))
 
-    axes[1].set_title('y = f(x)')
+    axes[0].set_title('y = f(x)')
     axes[0].set_xlabel('x')
     axes[0].set_ylabel('y')
+    axes[0].scatter(list(map(lambda input: input[-1], inputs)), outputs)
 
     axes[1].set_title('Loss')
     axes[1].set_xlabel('t')
