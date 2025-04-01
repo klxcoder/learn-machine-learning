@@ -31,6 +31,20 @@ def get_derivative() -> NDArray[np.float64]:
 
 def main():
 
+    (weight, bias, inputs, outputs) = get_data()
+    weight_predicted: NDArray[np.float64] = np.array([0, 0, 0])
+    bias_predicted: float = 0
+    outputs_predicted = list(map(lambda input: get_output(weight_predicted, input, bias_predicted), inputs))
+
+    def improve():
+        nonlocal weight_predicted
+        derivative: NDArray[np.float64] = get_derivative()
+        alpha = 0.1 # Learning rate
+        weight_predicted = weight_predicted - alpha * derivative
+        outputs_predicted = list(map(lambda input: get_output(weight_predicted, input, bias_predicted), inputs))
+        line.set_data(list(map(lambda input: input[-1], inputs)), outputs_predicted)
+        fig.canvas.draw()
+
     is_mouse_pressed = False
 
     def on_press(event): # type: ignore
@@ -45,20 +59,6 @@ def main():
     def on_release(event): # type: ignore
         nonlocal is_mouse_pressed
         is_mouse_pressed = False
-
-    (weight, bias, inputs, outputs) = get_data()
-    weight_predicted: NDArray[np.float64] = np.array([0, 0, 0])
-    bias_predicted: float = 0
-    outputs_predicted = list(map(lambda input: get_output(weight_predicted, input, bias_predicted), inputs))
-
-    def improve():
-        nonlocal weight_predicted
-        derivative: NDArray[np.float64] = get_derivative()
-        alpha = 0.1 # Learning rate
-        weight_predicted = weight_predicted - alpha * derivative
-        outputs_predicted = list(map(lambda input: get_output(weight_predicted, input, bias_predicted), inputs))
-        line.set_data(list(map(lambda input: input[-1], inputs)), outputs_predicted)
-        fig.canvas.draw()
 
     fig, axes = plt.subplots(1, 2, figsize=(10, 5))
     fig.canvas.mpl_connect('button_press_event', on_press)
