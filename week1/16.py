@@ -26,6 +26,9 @@ def get_data():
     outputs = list(map(lambda input: get_output(weight, input, bias), inputs))
     return (weight, bias, inputs, outputs)
 
+def improve():
+    print('improve')
+
 def main():
 
     is_mouse_pressed = False
@@ -42,9 +45,6 @@ def main():
     def on_release(event): # type: ignore
         nonlocal is_mouse_pressed
         is_mouse_pressed = False
-
-    def improve():
-        print('improve')
 
     (weight, bias, inputs, outputs) = get_data()
     weight_predicted: NDArray[np.float64] = np.array([0, 0, 0])
