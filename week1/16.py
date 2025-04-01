@@ -26,8 +26,12 @@ def get_data():
     outputs = list(map(lambda input: get_output(weight, input, bias), inputs))
     return (weight, bias, inputs, outputs)
 
+def get_derivative() -> NDArray[np.float64]:
+    return np.array([1, 2, 3])
+
 def improve():
-    print('improve')
+    derivative: NDArray[np.float64] = get_derivative()
+    print(derivative)
 
 def main():
 
