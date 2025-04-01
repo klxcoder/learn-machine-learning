@@ -33,15 +33,18 @@ def main():
     def on_press(event): # type: ignore
         nonlocal is_mouse_pressed
         is_mouse_pressed = True
-        print('click')
+        improve()
 
     def on_motion(event): # type: ignore
         if is_mouse_pressed:
-            print('click and move')
+            improve()
 
     def on_release(event): # type: ignore
         nonlocal is_mouse_pressed
         is_mouse_pressed = False
+
+    def improve():
+        print('improve')
 
     (weight, bias, inputs, outputs) = get_data()
     weight_predicted: NDArray[np.float64] = np.array([0, 0, 0])
