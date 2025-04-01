@@ -1,11 +1,3 @@
-"""
-inputs: vector[]
-input: vector = [x**3, x**2, x]
-x: float
-output: vector = [y]
-outputs: vectors
-"""
-
 import matplotlib.pyplot as plt
 import numpy as np
 from numpy.typing import NDArray
@@ -24,7 +16,7 @@ def get_data():
     xs: list[int] = list(range(-20, 21))
     inputs = list(map(lambda x: np.array([x**3, x**2, x]), xs))
     outputs: list[float] = list(map(lambda input: get_output(weight, input, bias), inputs))
-    return (weight, bias, inputs, outputs)
+    return (weight, inputs, outputs)
 
 def get_loss(outputs_predicted: list[float], outputs: list[float]) -> float:
     mse: float = sum((yp - yi)**2 for yp, yi in zip(outputs_predicted, outputs)) / len(outputs)
@@ -32,8 +24,8 @@ def get_loss(outputs_predicted: list[float], outputs: list[float]) -> float:
 
 def main():
 
-    (weight, bias, inputs, outputs) = get_data()
-    weight_predicted: NDArray[np.float64] = np.array([0, 0, 0])
+    (weight, inputs, outputs) = get_data()
+    weight_predicted: NDArray[np.float64] = np.zeros(len(weight))
     bias_predicted: float = 0
     outputs_predicted: list[float] = list(map(lambda input: get_output(weight_predicted, input, bias_predicted), inputs))
 
@@ -45,7 +37,7 @@ def main():
         small: float = 0.01
         current_loss: float = get_loss(outputs_predicted, outputs)
         derivative: list[float] = []
-        for i in range(len(weight)):
+        for i in range(len(weight_predicted)):
             weight_predicted[i] += small
             outputs_predicted = list(map(lambda input: get_output(weight_predicted, input, bias_predicted), inputs))
             next_loss: float = get_loss(outputs_predicted, outputs)
