@@ -27,12 +27,17 @@ def get_data():
     return (weight, bias, inputs, outputs)
 
 def main():
+
+    def on_press(event): # type: ignore
+        print('pressed')
+
     (weight, bias, inputs, outputs) = get_data()
     weight_predicted: NDArray[np.float64] = np.array([0, 0, 0])
     bias_predicted: float = 0
     outputs_predicted = list(map(lambda input: get_output(weight_predicted, input, bias_predicted), inputs))
 
-    _, axes = plt.subplots(1, 2, figsize=(10, 5))
+    fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+    fig.canvas.mpl_connect('button_press_event', on_press)
 
     axes[0].set_title('y = f(x)')
     axes[0].set_xlabel('x')
