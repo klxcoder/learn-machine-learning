@@ -20,4 +20,6 @@ def get_data():
         random.choice(range(-5, 6)),
     ])
     bias: float = 0
-    return (weight, bias)
+    xs: list[int] = list(range(-20, 21))
+    input = list(map(lambda x: x, xs))
+    return (weight, bias, input)
