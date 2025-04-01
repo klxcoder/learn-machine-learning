@@ -26,7 +26,7 @@ def get_data():
     outputs = list(map(lambda input: get_output(weight, input, bias), inputs))
     return (weight, bias, inputs, outputs)
 
-if __name__ == '__main__':
+def main():
     (weight, bias, inputs, outputs) = get_data()
 
     _, axes = plt.subplots(1, 2, figsize=(10, 5))
@@ -42,3 +42,9 @@ if __name__ == '__main__':
 
     plt.tight_layout()
     plt.show()
+
+    weight_predicted: NDArray[np.float64] = np.array([0, 0, 0])
+    bias_predicted: float = 0
+
+if __name__ == '__main__':
+    main()
