@@ -37,6 +37,9 @@ def main():
     bias_predicted: float = 0
     outputs_predicted: list[float] = list(map(lambda input: get_output(weight_predicted, input, bias_predicted), inputs))
 
+    x_loss = []
+    y_loss = []
+
     def get_derivative() -> NDArray[np.float64]:
         nonlocal outputs_predicted
         small: float = 0.01
@@ -56,7 +59,13 @@ def main():
         alpha: float = 1e-10 # Learning rate
         weight_predicted = weight_predicted - alpha * derivative
         outputs_predicted = list(map(lambda input: get_output(weight_predicted, input, bias_predicted), inputs))
+        l: float = get_loss(outputs_predicted, outputs)
+        x_loss.append(len(x_loss))
+        y_loss.append(l)
         line.set_data(list(map(lambda input: input[-1], inputs)), outputs_predicted)
+        loss.set_data(x_loss, y_loss)
+        axes[1].relim()
+        axes[1].autoscale_view()
         fig.canvas.draw()
 
     is_mouse_pressed = False
@@ -88,6 +97,7 @@ def main():
     axes[1].set_title('Loss')
     axes[1].set_xlabel('t')
     axes[1].set_ylabel('loss')
+    loss, = axes[1].plot([], [])
 
     plt.tight_layout()
     plt.show()
