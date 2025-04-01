@@ -9,10 +9,10 @@ def f(x: float, model: tuple[float, float, float, float]):
     return a*x**3 + b*x**2 + c*x + d
 
 def get_data():
-    a = random.choice(range(5))
-    b = random.choice(range(5))
-    c = random.choice(range(5))
-    d = random.choice(range(5))
+    a = random.choice(range(-5, 6))
+    b = random.choice(range(-5, 6))
+    c = random.choice(range(-5, 6))
+    d = random.choice(range(-5, 6))
     model: tuple[float, float, float, float] = (a, b, c, d)
     x = list(range(-10, 11))
     y = [f(_, model) + 2 * random.random() for _ in x]
