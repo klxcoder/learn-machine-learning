@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from numpy.typing import NDArray
 import random
+import math
 
 def get_output(weight: NDArray[np.float64], input: NDArray[np.float64], bias: float) -> float:
     return np.dot(weight, input) + bias
@@ -14,7 +15,7 @@ def get_data():
     ])
     bias: float = random.choice(range(-5, 6))
     xs: list[int] = list(range(-20, 21))
-    inputs = list(map(lambda x: np.array([x**3, x**2, x]), xs))
+    inputs = list(map(lambda x: np.array([abs(x), math.sqrt(abs(x)), x]), xs))
     outputs: list[float] = list(map(lambda input: get_output(weight, input, bias), inputs))
     return (weight, inputs, outputs)
 
@@ -56,7 +57,7 @@ def main():
     def improve():
         nonlocal weight_predicted
         nonlocal bias_predicted
-        alpha: float = 1e-10 # Learning rate
+        alpha: float = 1e-4 # Learning rate
         weight_derivative: NDArray[np.float64] = get_weight_derivative()
         weight_predicted = weight_predicted - alpha * weight_derivative
         bias_derivative: float = get_bias_derivative()
