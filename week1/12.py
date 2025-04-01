@@ -4,7 +4,7 @@ import random
 _, axes = plt.subplots(1, 2, figsize=(10, 5))
 line, = axes[0].plot([], [])
 
-def f(x: float, model: tuple[float, float, float]):
+def f(x: float, model: list[float]):
     (a, b, c) = model
     return a * x * x + b * x + c
 
@@ -12,7 +12,7 @@ def get_data():
     a = random.choice(range(5))
     b = random.choice(range(5))
     c = random.choice(range(5))
-    model = (a, b, c)
+    model: list[float] = [a, b, c]
     x = list(range(-10, 11))
     y = [f(_, model) + 2 * random.random() for _ in x]
     return (model, x, y)
@@ -22,37 +22,36 @@ def get_data():
 x_loss = []
 y_loss = []
 
-a_predicted: float = random.random()
-b_predicted: float = random.random()
-c_predicted: float = random.random()
+model_predicted: list[float] = [0., 0., 0.]
 
 is_mouse_pressed = False
 
-def get_derivative():
-    small = 0.01
-    current_lost = get_lost((a_predicted, b_predicted, c_predicted))
-    derivative_a = (get_lost((a_predicted + small, b_predicted, c_predicted)) - current_lost)/small
-    derivative_b = (get_lost((a_predicted, b_predicted + small, c_predicted)) - current_lost)/small
-    derivative_c = (get_lost((a_predicted, b_predicted, c_predicted + small)) - current_lost)/small
-    return (derivative_a, derivative_b, derivative_c)
+def get_derivative() -> tuple[float, ...]:
+    small: float = 0.01
+    current_lost: float = get_lost(model_predicted)
 
-def get_lost(model: tuple[float, float, float]):
-    y_predicted = [f(_, model) for _ in x]
-    mse = sum((yp - yi)**2 for yp, yi in zip(y_predicted, y)) / len(y)
+    derivative: list[float] = []
+
+    for i in range(len(model_predicted)):
+        _model_predicted: list[float] = list(model_predicted)
+        _model_predicted[i] += small
+        next_loss: float = get_lost(_model_predicted)
+        derivative.append((next_loss - current_lost) / small)
+
+    return tuple(derivative)
+
+def get_lost(model: list[float]) -> float:
+    y_predicted: list[float] = [f(_, model) for _ in x]
+    mse: float = sum((yp - yi)**2 for yp, yi in zip(y_predicted, y)) / len(y)
     return mse
 
 alpha = 0.0001
 
 def improve():
-    global a_predicted, b_predicted, c_predicted
-
-    (derivative_a, derivative_b, derivative_c) = get_derivative()
-
-    a_predicted -= alpha * derivative_a
-    b_predicted -= alpha * derivative_b
-    c_predicted -= alpha * derivative_c
-
-    model_predicted = (a_predicted, b_predicted, c_predicted)
+    global model_predicted
+    derivative: tuple[float, ...] = get_derivative()
+    for i in range(len(model_predicted)):
+        model_predicted[i] -= alpha * derivative[i]
 
     # Plot the predicted line
     line.set_data(x, [f(_, model_predicted) for _ in x])
