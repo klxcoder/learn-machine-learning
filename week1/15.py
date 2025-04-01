@@ -11,6 +11,8 @@ def f(x: float, model: NDArray[np.float64]):
     if(x<0): return a*x**3 + b*x**2 + c*x + d + c
     return a*x**4
 
+alpha = 1e-10
+
 def get_data():
     a = random.choice(range(-5, 6))
     b = random.choice(range(-5, 6))
@@ -47,8 +49,6 @@ def get_lost(model: NDArray[np.float64]) -> float:
     y_predicted: list[float] = [f(_, model) for _ in x]
     mse: float = sum((yp - yi)**2 for yp, yi in zip(y_predicted, y)) / len(y)
     return mse
-
-alpha = 1e-10
 
 def improve():
     global model_predicted
