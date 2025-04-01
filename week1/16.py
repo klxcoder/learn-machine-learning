@@ -21,11 +21,11 @@ def get_data():
     ])
     bias: float = 0
     xs: list[int] = list(range(-20, 21))
-    input = list(map(lambda x: x, xs))
-    return (weight, bias, input)
+    inputs = list(map(lambda x: x, xs))
+    return (weight, bias, inputs)
 
 if __name__ == '__main__':
-    (weight, bias, input) = get_data()
+    (weight, bias, inputs) = get_data()
     print(weight)
     print(bias)
-    print(input)
+    print(inputs)
