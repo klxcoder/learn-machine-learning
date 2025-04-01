@@ -3,7 +3,7 @@
 This week, you'll learn the other type of supervised learning, classification. You'll learn how to predict categories using the logistic regression model. You'll learn about the problem of overfitting, and how to handle this problem with a method called regularization. You'll get to practice implementing logistic regression with regularization at the end of this week!
 
 # Videos
-  - [ ] Motivations [link](https://www.coursera.org/learn/machine-learning/lecture/aoMt6/motivations)
+  - [x] Motivations [link](https://www.coursera.org/learn/machine-learning/lecture/aoMt6/motivations)
   - [ ] Logistic regression [link](https://www.coursera.org/learn/machine-learning/lecture/zNxaw/logistic-regression)
   - [ ] Decision boundary [link](https://www.coursera.org/learn/machine-learning/lecture/qrxwU/decision-boundary)
   - [ ] Cost function for logistic regression [link](https://www.coursera.org/learn/machine-learning/lecture/0hpr8/cost-function-for-logistic-regression)
