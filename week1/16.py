@@ -8,6 +8,16 @@ outputs: vectors
 
 import numpy as np
 from numpy.typing import NDArray
+import random
 
 def get_output(weight: NDArray[np.float64], input: NDArray[np.float64], bias: float) -> float:
     return np.dot(weight, input) + bias
+
+def get_data():
+    weight: NDArray[np.float64] = np.array([
+        random.choice(range(-5, 6)),
+        random.choice(range(-5, 6)),
+        random.choice(range(-5, 6)),
+    ])
+    bias: float = 0
+    return (weight, bias)
