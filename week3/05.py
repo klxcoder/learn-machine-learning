@@ -31,9 +31,12 @@ def update(x: float, y: float, w: float, b: float):
     return w, b
 
 def main():
+
+    x, y = get_data()
+
     _, axes = plt.subplots(1, 2, figsize=(10, 5))
     # Plot the parabola on the left subplot
-    axes[0].plot([0, 1, 2], [0, 1, 2])
+    axes[0].scatter([x], [y])
     axes[0].set_title('data')
     axes[0].set_xlabel('x')
     axes[0].set_ylabel('y')
@@ -50,7 +53,6 @@ def main():
     # Display the plot
     plt.show()
 
-    x, y = get_data()
     w, b = get_model_parameters()
 
     for _ in range(10):
