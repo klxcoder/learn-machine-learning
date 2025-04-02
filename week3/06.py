@@ -51,12 +51,19 @@ def main():
     alpha = 0.1 # learning rate
 
     for _ in range(1000):
-        loss = get_loss(xs[0], ys[0], w, b)
+        sum_loss = 0
+        sum_dloss_dw = 0
+        sum_dloss_db = 0
+        for x, y in zip(xs, ys):
+            loss = get_loss(x, y, w, b)
+            sum_loss += loss
+            dloss_dw, dloss_db = get_derivative(x, y, w, b, loss)
+            sum_dloss_dw += dloss_dw
+            sum_dloss_db += dloss_db
         x_loss.append(len(x_loss))
-        y_loss.append(loss)
-        dloss_dw, dloss_db = get_derivative(xs[0], ys[0], w, b, loss)
-        w -= alpha * dloss_dw
-        b -= alpha * dloss_db
+        y_loss.append(sum_loss/len(xs))
+        w -= alpha * sum_dloss_dw / len(xs)
+        b -= alpha * sum_dloss_db / len(xs)
 
     axes[1].plot(x_loss, y_loss)
 
