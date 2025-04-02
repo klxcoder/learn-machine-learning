@@ -20,14 +20,11 @@ def get_loss(x: float, y: float, w: float, b: float):
     loss = - (y * math.log(p) + (1 - y) * math.log(1 - p))
     return loss
 
-def update(x: float, y: float, w: float, b: float, current_loss: float):
+def get_derivative(x: float, y: float, w: float, b: float, current_loss: float):
     small = 0.01
     dloss_dw = (get_loss(x, y, w + small, b) - current_loss) / small
     dloss_db = (get_loss(x, y, w, b + small) - current_loss) / small
-    alpha = 0.1
-    w -= alpha * dloss_dw
-    b -= alpha * dloss_db
-    return w, b
+    return dloss_dw, dloss_db
 
 def main():
 
@@ -51,11 +48,15 @@ def main():
     x_loss = []
     y_loss = []
 
+    alpha = 0.1 # learning rate
+
     for _ in range(1000):
         loss = get_loss(x, y, w, b)
         x_loss.append(len(x_loss))
         y_loss.append(loss)
-        w, b = update(x, y, w, b, loss)
+        dloss_dw, dloss_db = get_derivative(x, y, w, b, loss)
+        w -= alpha * dloss_dw
+        b -= alpha * dloss_db
 
     axes[1].plot(x_loss, y_loss)
 
