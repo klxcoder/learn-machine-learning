@@ -2,9 +2,9 @@ import math
 import matplotlib.pyplot as plt
 
 def get_data():
-    x = 2
-    y = 1
-    return x, y
+    xs: list[float] = [2]
+    ys: list[int] = [1]
+    return xs, ys
 
 def get_model_parameters():
     w = 0.5
@@ -28,14 +28,14 @@ def get_derivative(x: float, y: float, w: float, b: float, current_loss: float):
 
 def main():
 
-    x, y = get_data()
+    xs, ys = get_data()
     w, b = get_model_parameters()
 
     _, axes = plt.subplots(1, 2, figsize=(10, 5))
 
     # Plot the parabola on the left subplot
-    axes[0].scatter([x], [y])
-    axes[0].plot([x-1, x, x+1], [sigmoid(w*(x-1)+b), sigmoid(w*x+b), sigmoid(w*(x+1)+b)], color='red')
+    axes[0].scatter(xs, ys)
+    axes[0].plot(xs, list(map(lambda x: sigmoid(w*x+b), xs)), color='red')
     axes[0].set_title('data')
     axes[0].set_xlabel('x')
     axes[0].set_ylabel('y')
@@ -51,18 +51,18 @@ def main():
     alpha = 0.1 # learning rate
 
     for _ in range(1000):
-        loss = get_loss(x, y, w, b)
+        loss = get_loss(xs[0], ys[0], w, b)
         x_loss.append(len(x_loss))
         y_loss.append(loss)
-        dloss_dw, dloss_db = get_derivative(x, y, w, b, loss)
+        dloss_dw, dloss_db = get_derivative(xs[0], ys[0], w, b, loss)
         w -= alpha * dloss_dw
         b -= alpha * dloss_db
 
     axes[1].plot(x_loss, y_loss)
 
-    axes[0].plot([x-1, x, x+1], [sigmoid(w*(x-1)+b), sigmoid(w*x+b), sigmoid(w*(x+1)+b)], color='blue')
+    axes[0].plot(xs, list(map(lambda x: sigmoid(w*x+b), xs)), color='blue')
 
-        # Adjust layout to prevent overlapping titles
+    # Adjust layout to prevent overlapping titles
     plt.tight_layout()
 
     # Display the plot
