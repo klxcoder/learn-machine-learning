@@ -20,7 +20,7 @@ def main():
     # print(z) # 0.0
     p = sigmoid(z)
     # print(p) # 0.5
-    loss = - (y * math.log(p) + (1 - y) * math.log(1 - p))
+    # loss = - (y * math.log(p) + (1 - y) * math.log(1 - p))
     # print(loss) # 0.6931471805599453
     dloss_dp = (1-y)/(1-p) - y/p
     # print(dloss_dp) # -2.0
@@ -37,6 +37,10 @@ def main():
     # print(w) # 0.6
     b -= alpha * dloss_db
     # print(b) # -0.95
+    z = w * x + b
+    p = sigmoid(z)
+    loss = - (y * math.log(p) + (1 - y) * math.log(1 - p))
+    print(loss) # 0.5759394198788437 < 0.6931471805599453
 
 if __name__ == "__main__":
     main()
