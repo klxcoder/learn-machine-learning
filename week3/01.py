@@ -35,6 +35,8 @@ def main():
     alpha = 0.1
     w -= alpha * dloss_dw
     # print(w) # 0.6
+    b -= alpha * dloss_db
+    # print(b) # -0.95
 
 if __name__ == "__main__":
     main()
