@@ -17,8 +17,11 @@ def main():
     x, y = get_data()
     w, b = get_model_parameters()
     z = w * x + b
+    # print(z) # 0.0
     p = sigmoid(z)
-    print(z, p) # 0.0 0.5
+    # print(p) # 0.5
+    loss = - (y * math.log(p) + (1 - y) * math.log(1 - p))
+    # print(loss) # 0.6931471805599453
 
 if __name__ == "__main__":
     main()
