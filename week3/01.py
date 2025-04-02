@@ -30,6 +30,8 @@ def main():
     # print(dloss_dz) # -0.5
     dloss_dw = dloss_dz * x
     # print(dloss_dw) # -1.0
+    dloss_db = dloss_dz
+    # print(dloss_db) # -0.5
 
 if __name__ == "__main__":
     main()
