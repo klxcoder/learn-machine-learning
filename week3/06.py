@@ -7,8 +7,8 @@ def get_data():
     return xs, ys
 
 def get_model_parameters():
-    w = 0.5
-    b = -1
+    w = 0
+    b = 0
     return w, b
 
 def sigmoid(x: float):
