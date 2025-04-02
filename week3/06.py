@@ -38,8 +38,8 @@ def main():
     _, axes = plt.subplots(1, 2, figsize=(10, 5))
 
     # Plot the parabola on the left subplot
-    axes[0].scatter(xs, ys)
-    axes[0].plot(xs, list(map(lambda x: sigmoid(w*x+b), xs)), color='red')
+    axes[0].scatter(xs*max_xs, ys)
+    axes[0].plot(xs*max_xs, list(map(lambda x: sigmoid(w*x+b), xs)), color='red')
     axes[0].set_title('data')
     axes[0].set_xlabel('x')
     axes[0].set_ylabel('y')
@@ -71,7 +71,7 @@ def main():
 
     axes[1].plot(x_loss, y_loss)
 
-    axes[0].plot(xs, list(map(lambda x: sigmoid(w*x+b), xs)), color='blue')
+    axes[0].plot(xs*max_xs, list(map(lambda x: sigmoid(w*x+b), xs)), color='blue')
 
     # Adjust layout to prevent overlapping titles
     plt.tight_layout()
