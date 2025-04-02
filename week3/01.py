@@ -26,6 +26,8 @@ def main():
     # print(dloss_dp) # -2.0
     dp_dz = p * (1 - p)
     # print(dp_dz) # 0.25
+    dloss_dz = dloss_dp * dp_dz
+    # print(dloss_dz) # -0.5
 
 if __name__ == "__main__":
     main()
