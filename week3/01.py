@@ -22,6 +22,8 @@ def main():
     # print(p) # 0.5
     loss = - (y * math.log(p) + (1 - y) * math.log(1 - p))
     # print(loss) # 0.6931471805599453
+    dloss_dp = (1-y)/(1-p) - y/p
+    print(dloss_dp) # -2.0
 
 if __name__ == "__main__":
     main()
