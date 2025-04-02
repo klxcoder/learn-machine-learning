@@ -31,6 +31,8 @@ def get_derivative(x: float, y: float, w: float, b: float, current_loss: float):
 def main():
 
     xs, ys = get_data()
+    max_xs = np.max(xs)
+    xs = xs / max_xs
     w, b = get_model_parameters()
 
     _, axes = plt.subplots(1, 2, figsize=(10, 5))
