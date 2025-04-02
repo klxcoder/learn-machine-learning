@@ -4,8 +4,8 @@ from numpy.typing import NDArray
 import matplotlib.pyplot as plt
 
 def get_data():
-    xs: NDArray[np.float64] = np.array(list(range(20)))
-    ys: list[int] = list(map(lambda x: 0 if x < 10 else 1, xs))
+    xs: NDArray[np.float64] = np.array(list(range(40)))
+    ys: list[int] = list(map(lambda x: 0 if x < 20 else 1, xs))
     return xs, ys
 
 def get_model_parameters():
