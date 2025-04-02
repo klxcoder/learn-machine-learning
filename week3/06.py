@@ -2,8 +2,8 @@ import math
 import matplotlib.pyplot as plt
 
 def get_data():
-    xs: list[float] = [1, 2, 3]
-    ys: list[int] = [0, 1, 1]
+    xs: list[float] = list(range(20))
+    ys: list[int] = list(map(lambda x: 0 if x < 10 else 1, xs))
     return xs, ys
 
 def get_model_parameters():
