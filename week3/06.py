@@ -2,8 +2,8 @@ import math
 import matplotlib.pyplot as plt
 
 def get_data():
-    xs: list[float] = [2]
-    ys: list[int] = [1]
+    xs: list[float] = [1, 2, 3]
+    ys: list[int] = [0, 1, 1]
     return xs, ys
 
 def get_model_parameters():
