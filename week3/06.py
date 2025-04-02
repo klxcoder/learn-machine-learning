@@ -1,8 +1,10 @@
 import math
+import numpy as np
+from numpy.typing import NDArray
 import matplotlib.pyplot as plt
 
 def get_data():
-    xs: list[float] = list(range(20))
+    xs: NDArray[np.float64] = np.array(list(range(20)))
     ys: list[int] = list(map(lambda x: 0 if x < 10 else 1, xs))
     return xs, ys
 
