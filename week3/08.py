@@ -5,8 +5,13 @@ def get_data():
     ys = [0, 1]
     return xs, ys
 
+def get_model_parameters():
+    b0, b1, b2 = 1, 1, 1
+    return b0, b1, b2
+
 def main():
     xs, ys = get_data()
+    b0, b1, b2 = get_model_parameters()
 
     _, axes = plt.subplots(1, 2, figsize=(10, 5))
 
@@ -21,7 +26,9 @@ def main():
         else:
             axes[0].scatter(xs[i][0], xs[i][1], marker='s', color='blue', label='Pass' if not pass_label_added else "")
             pass_label_added = True
-
+    x1s = list(map(lambda x: x[0], xs))
+    x2s = list(map(lambda x1: (-b0 - b1 * x1) / b2, x1s))
+    axes[0].plot(x1s, x2s, color='red')
     axes[0].set_title('data')
     axes[0].set_xlabel('x1 (hours of study)')
     axes[0].set_ylabel('x2 (hours of sleep)')
