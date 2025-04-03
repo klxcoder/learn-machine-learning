@@ -55,12 +55,21 @@ def main():
     axes[1].set_xlabel('t')
     axes[1].set_ylabel('loss')
 
-    x_loss: list[float] = [-1]
-    y_loss: list[float] = [-1]
+    x_loss: list[float] = []
+    y_loss: list[float] = []
 
-    # alpha = 0.1 # learning rate
+    alpha = 0.1 # learning rate
+    
     loss = get_loss(xs[0], ys[0], b0, b1, b2)
+    x_loss.append(len(x_loss))
+    y_loss.append(loss)
 
+    dloss_db0, dloss_db1, dloss_db2 = get_derivative(xs[0], ys[0], b0, b1, b2, loss)
+    b0 -= alpha * dloss_db0
+    b1 -= alpha * dloss_db1
+    b2 -= alpha * dloss_db2
+
+    loss = get_loss(xs[0], ys[0], b0, b1, b2)
     x_loss.append(len(x_loss))
     y_loss.append(loss)
 
