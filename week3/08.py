@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import math
 
 def get_data():
-    xs = [[1, 1], [2, 2]]
+    xs: list[list[float]] = [[1, 1], [2, 2]]
     ys = [0, 1]
     return xs, ys
 
@@ -18,6 +18,13 @@ def get_loss(x: list[float], y: float, b0: float, b1: float, b2: float):
     p = sigmoid(z)
     loss = - (y * math.log(p) + (1 - y) * math.log(1 - p))
     return loss
+
+def get_derivative(x: list[float], y: float, b0: float, b1: float, b2: float, current_loss: float):
+    small = 0.01
+    dloss_db0 = (get_loss(x, y, b0 + small, b1, b2) - current_loss) / small
+    dloss_db1 = (get_loss(x, y, b0, b1 + small, b2) - current_loss) / small
+    dloss_db2 = (get_loss(x, y, b0, b1, b2 + small) - current_loss) / small
+    return dloss_db0, dloss_db1, dloss_db2
 
 def main():
     xs, ys = get_data()
