@@ -75,6 +75,10 @@ def main():
 
     axes[1].plot(x_loss, y_loss)
 
+    x1s = list(map(lambda x: x[0], xs))
+    x2s = list(map(lambda x1: (-b0 - b1 * x1) / b2, x1s))
+    axes[0].plot(x1s, x2s, color='blue')
+
     # Adjust layout to prevent overlapping titles
     plt.tight_layout()
 
