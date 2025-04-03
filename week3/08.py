@@ -64,14 +64,15 @@ def main():
     x_loss.append(len(x_loss))
     y_loss.append(loss)
 
-    dloss_db0, dloss_db1, dloss_db2 = get_derivative(xs[0], ys[0], b0, b1, b2, loss)
-    b0 -= alpha * dloss_db0
-    b1 -= alpha * dloss_db1
-    b2 -= alpha * dloss_db2
+    for _ in range(100):
+        dloss_db0, dloss_db1, dloss_db2 = get_derivative(xs[0], ys[0], b0, b1, b2, loss)
+        b0 -= alpha * dloss_db0
+        b1 -= alpha * dloss_db1
+        b2 -= alpha * dloss_db2
 
-    loss = get_loss(xs[0], ys[0], b0, b1, b2)
-    x_loss.append(len(x_loss))
-    y_loss.append(loss)
+        loss = get_loss(xs[0], ys[0], b0, b1, b2)
+        x_loss.append(len(x_loss))
+        y_loss.append(loss)
 
     axes[1].plot(x_loss, y_loss)
 
