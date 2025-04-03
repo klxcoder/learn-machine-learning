@@ -13,9 +13,13 @@ def get_model_parameters():
 def sigmoid(x: float):
     return 1/(1+math.exp(-x))
 
-def get_loss(x: list[float], y: float, b0: float, b1: float, b2: float):
+def get_p(x: list[float], y: float, b0: float, b1: float, b2: float):
     z = b0 + b1 * x[0] + b2 * x[1]
     p = sigmoid(z)
+    return p
+
+def get_loss(x: list[float], y: float, b0: float, b1: float, b2: float):
+    p = get_p(x, y, b0, b1, b2)
     loss = - (y * math.log(p) + (1 - y) * math.log(1 - p))
     return loss
 
