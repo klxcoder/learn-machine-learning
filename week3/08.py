@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import math
 
 def get_data():
-    xs: list[list[float]] = [[1, 1], [2, 2]]
-    ys = [0, 1]
+    xs: list[list[float]] = [[2, 60/90], [3, 70/90], [6, 85/90], [8, 90/90], [4, 75/90], [7, 80/90]]
+    ys = [0, 0, 1, 1, 0, 1]
     return xs, ys
 
 def get_model_parameters():
@@ -51,8 +51,8 @@ def main():
     x2s = list(map(lambda x1: (-b0 - b1 * x1) / b2, x1s))
     axes[0].plot(x1s, x2s, color='red')
     axes[0].set_title('data')
-    axes[0].set_xlabel('x1 (hours of study)')
-    axes[0].set_ylabel('x2 (hours of sleep)')
+    axes[0].set_xlabel('x1 (Hours Studied)')
+    axes[0].set_ylabel('x2 (Previous Grade)')
 
     # Plot the loss on the right subplot
     axes[1].set_title('loss')
