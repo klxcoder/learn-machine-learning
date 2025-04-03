@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import math
 
 def get_data():
     xs = [[1, 1], [2, 2]]
@@ -8,6 +9,9 @@ def get_data():
 def get_model_parameters():
     b0, b1, b2 = 1, 1, 1
     return b0, b1, b2
+
+def sigmoid(x: float):
+    return 1/(1+math.exp(-x))
 
 def main():
     xs, ys = get_data()
