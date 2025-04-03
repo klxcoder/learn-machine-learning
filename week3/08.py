@@ -2,9 +2,10 @@ import matplotlib.pyplot as plt
 import math
 
 def get_data():
-    xs: list[list[float]] = [[2, 60/90], [3, 70/90], [6, 85/90], [8, 90/90], [4, 75/90], [7, 80/90]]
+    xs: list[list[float]] = [[2, 60], [3, 70], [6, 85], [8, 90], [4, 75], [7, 80]]
     ys = [0, 0, 1, 1, 0, 1]
-    return xs, ys
+    xs_scaled: list[list[float]] = list(map(lambda x: [x[0], x[1]/100], xs))
+    return xs, ys, xs_scaled
 
 def get_model_parameters():
     b0, b1, b2 = 1, 1, 1
@@ -31,7 +32,7 @@ def get_derivative(x: list[float], y: float, b0: float, b1: float, b2: float, cu
     return dloss_db0, dloss_db1, dloss_db2
 
 def main():
-    xs, ys = get_data()
+    xs, ys, xs_scaled = get_data()
     b0, b1, b2 = get_model_parameters()
 
     _, axes = plt.subplots(1, 2, figsize=(10, 5))
@@ -47,9 +48,12 @@ def main():
         else:
             axes[0].scatter(xs[i][0], xs[i][1], marker='s', color='blue', label='Pass' if not pass_label_added else "")
             pass_label_added = True
+
     x1s = list(map(lambda x: x[0], xs))
     x2s = list(map(lambda x1: (-b0 - b1 * x1) / b2, x1s))
-    axes[0].plot(x1s, x2s, color='red')
+    x2s_scaled: list[float] = list(map(lambda x: x * 100, x2s))
+    axes[0].plot(x1s, x2s_scaled, color='red')
+
     axes[0].set_title('data')
     axes[0].set_xlabel('x1 (Hours Studied)')
     axes[0].set_ylabel('x2 (Previous Grade)')
@@ -64,7 +68,7 @@ def main():
 
     alpha = 0.1 # learning rate
     
-    loss = get_loss(xs[0], ys[0], b0, b1, b2)
+    loss = get_loss(xs_scaled[0], ys[0], b0, b1, b2)
     x_loss.append(len(x_loss))
     y_loss.append(loss)
 
@@ -73,7 +77,7 @@ def main():
         sum_dloss_db0 = 0
         sum_dloss_db1 = 0
         sum_dloss_db2 = 0
-        for x, y in zip(xs, ys):
+        for x, y in zip(xs_scaled, ys):
             loss = get_loss(x, y, b0, b1, b2)
             sum_loss += loss
             dloss_db0, dloss_db1, dloss_db2 = get_derivative(x, y, b0, b1, b2, loss)
@@ -91,7 +95,8 @@ def main():
 
     x1s = list(map(lambda x: x[0], xs))
     x2s = list(map(lambda x1: (-b0 - b1 * x1) / b2, x1s))
-    axes[0].plot(x1s, x2s, color='blue')
+    x2s_scaled: list[float] = list(map(lambda x: x * 100, x2s))
+    axes[0].plot(x1s, x2s_scaled, color='blue')
 
     # Adjust layout to prevent overlapping titles
     plt.tight_layout()
