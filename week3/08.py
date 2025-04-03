@@ -48,6 +48,17 @@ def main():
     axes[1].set_xlabel('t')
     axes[1].set_ylabel('loss')
 
+    x_loss: list[float] = [-1]
+    y_loss: list[float] = [-1]
+
+    # alpha = 0.1 # learning rate
+    loss = get_loss(xs[0], ys[0], b0, b1, b2)
+
+    x_loss.append(len(x_loss))
+    y_loss.append(loss)
+
+    axes[1].plot(x_loss, y_loss)
+
     # Adjust layout to prevent overlapping titles
     plt.tight_layout()
 
